@@ -1,0 +1,7 @@
+- Proje localhost da çalışacak şekilde ve mysql kullanılarak yapılmıştır.
+
+- Projeyi çalıştırmadan önce kerem_case_study adında db oluşturmanız ve "script"
+dosyasında ki komutları bu db de çalıştırmanız gerekmektedir.
+
+- Herhangi bir sorunla karşılaşırsanız lütfen bana geri dönüş yapınız zira
+proje düzgün çalışmaktadır.

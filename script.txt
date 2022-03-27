@@ -1,0 +1,54 @@
+create table işlem_türü_prim_oranı
+(
+    id         bigint unsigned auto_increment
+        primary key,
+    İşlem_adı  varchar(255) not null,
+    prim_oranı int          null,
+    created_at timestamp    null,
+    updated_at timestamp    null
+)
+    collate = utf8mb4_unicode_ci;
+
+create table satış_elemanları
+(
+    id         bigint unsigned auto_increment
+        primary key,
+    İsim       varchar(255) not null,
+    created_at timestamp    null,
+    updated_at timestamp    null
+)
+    collate = utf8mb4_unicode_ci;
+
+create table satış_elemanları_hedef
+(
+    id                  bigint unsigned auto_increment
+        primary key,
+    created_at          timestamp       null,
+    updated_at          timestamp       null,
+    satış_elemanları_id bigint unsigned null,
+    hedef               int             null,
+    constraint fk_satış_elemanları_id
+        foreign key (satış_elemanları_id) references satış_elemanları (id)
+            on delete cascade
+)
+    collate = utf8mb4_unicode_ci;
+
+create table satışlar
+(
+    id                  bigint unsigned auto_increment
+        primary key,
+    Ürün_adı            varchar(255)    not null,
+    ürün_tutarı         varchar(255)    not null,
+    created_at          timestamp       null,
+    updated_at          timestamp       null,
+    satış_elemanları_id bigint unsigned null,
+    işlem_türü_id       bigint unsigned null,
+    constraint fk2_satış_elemanları_id
+        foreign key (satış_elemanları_id) references satış_elemanları (id)
+            on delete cascade,
+    constraint fk_işlem_türü_id
+        foreign key (işlem_türü_id) references işlem_türü_prim_oranı (id)
+            on delete cascade
+)
+    collate = utf8mb4_unicode_ci;
+
